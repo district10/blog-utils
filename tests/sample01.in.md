@@ -1,15 +1,42 @@
-# The Title
+% title
+% author
+% date
+
+The Title
+=========
 
 [readed 1](https://raw.githubusercontent.com/district10/blog/master/_pages/notes.md)
 
 :   that's my note.
 
-    <#>(@tag11)
+    <#>(@read1tag1 @read1tag2)
 
     note continues.
 
+    ```
+    code: ```
+    ```
+
+    <#hooked>(@h1 @h2)
+
+    ~~~
+    code: ~~~
+    ~~~
+
     ```c
-    printf("some code.");
+    code: ```c
+    ```
+
+    ```python
+    code: ```python
+    ```
+
+    ~~~~~~~
+    code: ~~~~~~
+    ~~~~~~~
+
+    ```tzx-bigquote
+    tzx-bigquote
     ```
 
 [not readed yet](https://github.com/hadley/adv-r/)
@@ -20,6 +47,42 @@
 
     note and note and note
     and note... on and on
+
+    ~~~{.python}
+    code: ~~~{.python}
+    ~~~
+
+    ~~~ {.python}
+    code: ~~~ {.python}
+    ~~~
+
+    ~~~ {#id1}
+    code: ~~~ {#id1}
+    ~~~
+
+    ~~~ {.python #id2}
+    code: ~~~ {.python #id2}
+    ~~~
+
+    ~~~ {#id3 .python}
+    code: ~~~ {#id3 .python}
+    ~~~
+
+    ~~~ {.python #id4 otherwords}
+    code: ~~~ {.python #id4, otherwords}
+    ~~~
+
+    ~~~ {.python otherwords}
+    code: ~~~ {.python otherwords}
+    ~~~
+
+    ~~~ {.python other words}
+    code: ~~~ {.python other words}
+    ~~~
+
+    ~~~~~ {.python other words}
+    code: ~~~ {.python other words}
+    ~~~~~~~~~~~~~~~
 
 ---
 
