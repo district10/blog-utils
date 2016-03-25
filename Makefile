@@ -63,7 +63,7 @@ publish:
 pack:
 	rm -Rf publish/* 
 	cp -r tests outputs publish/
-	(echo '```'; tree; echo '```';) | pandoc -f markdown -s -S --ascii -o publish/index.html
+	(echo '```'; tree publish; echo '```';) | pandoc -f markdown -s -S --ascii -o publish/index.html
 
 m:
 	$(EDITOR) Makefile
