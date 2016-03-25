@@ -41,9 +41,10 @@ $(DIR_OUTPUTS)/%.out.readinglist $(DIR_OUTPUTS)/%.out.tags $(DIR_OUTPUTS)/%.out.
 
 gh:
 	git add -A; git commit -m "`date` - `uname`"; git push
-
 m:
 	$(EDITOR) Makefile
+readme:	
+	$(EDITOR) README.md
 
 clean:
 	rm $(DIR_OUTPUTS)/*
