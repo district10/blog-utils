@@ -1,0 +1,5 @@
+sample01.in.html#: (@read0tag1 @read0tag2)
+sample01.in.html#xb329a1eb2b08bb067483d7942abeb8c: (@read1tag1 @read1tag2)
+sample01.in.html#hooked: (@h1 @h2)
+sample01.in.html#x8f7a7f8af4bd76623b7b8ebc8130ad6: (@tag1 @tag2 @tag-3 @ta-g-4)
+sample01.in.html#x8f7a7f8af4bd76623b7b8ebc8130ad6: (@read0tag1 @read0tag2)

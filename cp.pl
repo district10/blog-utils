@@ -5,31 +5,37 @@ use strict;
 use Digest::MD5 qw(md5_hex);
 use autodie;
 
+sub md5id {
+    my $id = md5_hex($_);
+    $id =~ s/^./x/;
+    return $id;
+}
+
 if (@ARGV < 3) {
     print $ARGV;
     die "Usage:\n\tperl eoar.pl in.md out.md out.tags\n";
 }
 
-open IMD,  '<', $ARGV[0];
-open OMD,  '>', $ARGV[1];
-open TAGS, '>', $ARGV[2];
+open IMD,  '<', $ARGV[0]; # input markdown file
+open RDL,  '>', $ARGV[1]; # output reading list
+open TAGS, '>', $ARGV[2]; # output tags
 
-my $hdr = <<__;
-% Reads | 斋读
-% TANG ZhiXiong
-% 2015-12-07
-
-Reads | 斋读
-============
-__
-
-print OMD $hdr . "\n";
-
+my $filename = $ARGV[0];
+$filename =~ s:.*[/\\]::;
+$filename =~ s:.md$:.html:;
+my $filenamehash = &md5id($filename);
 my $curAnchor;
 my $level = 0;
 my $codeId = 0;
+my $verb = 0;
 while (<IMD>) {
     my $line = $_;
+
+    # real, verbatim
+    if ($verb == 1 && ! /^\s*-->\s*/) { next; }                                         # inside
+    if ($verb == 0 && /^\s*<!--.*?-->\s*$/) { next; }                                   # oneline
+    if ($verb == 0 && /^\s*<!--/) { $verb = 1; next; }                                  # get in
+    if ($verb == 1 && /^\s*-->\s*/) { $verb = 0; next if <IMD> =~ /^\s*$/; next; }      # get out
 
     # code, verbatim
     if ($level > 0) {
@@ -37,9 +43,11 @@ while (<IMD>) {
              $line =~ /^\s*(~~~[~\s]*)$/ )
         {
             die if --$level < 0;
-            $line =~ s/${1}/~~~\n/;
+            my $end = '~~~' x ($level+1);
+            $line =~ s/${1}/$end/;
         }
-        print $line;
+        $line =~ s/\r?\n?$//;
+        print $line . "\n";
         next;
     }
 
@@ -48,12 +56,13 @@ while (<IMD>) {
         my $prefix = $1 // "";
         my $anchor = $2 // "";
         $line =~ s/.*<#.*?>//;
-        if ($anchor) {
-            print TAGS '#', $anchor, ': ', $line;
-            print $prefix . '`@`{.tzx-anchor #' . $anchor . '}' . "\n";
+        if ($anchor) { # grab anchor
+            print TAGS $filename, '#', $anchor, ': ', $line;
+            print $prefix . '`@`{.tzx-anchor #' . $filenamehash . $anchor . '}' . "\n";
             next;
         }
-        print TAGS '#', $curAnchor, ': ', $line;
+        # use last captured anchor
+        print TAGS $filename, '#', $curAnchor, ': ', $line;
         next if <IMD> =~ /^\s*$/;
         next;
     }
@@ -61,17 +70,17 @@ while (<IMD>) {
     # one reading material
     if (/^\[.*?\](.*)$/) {
         $line =~ s/\r?\n?$//;
-        my $url = $line;
-        my $hex = &md5_hex($url);
-        my $suffix = ' `@`{.tzx-anchor #' . $hex . '}' . "\n";
-        print OMD '- ', $line, $suffix;
-        print $line, $suffix;
+        my $mdurl = $line;
+        $mdurl =~ s/^\s+|\s+$//g;
+        my $hex = &md5id($mdurl);
+        print $line, ' `@`{.tzx-anchor #' . $hex . '}' . "\n";
+        print RDL '- ', $line, ' [☯](' . $filename . '#' . $hex . ")\n";
         $curAnchor = $hex;
         next;
     }
 
     # assume $level = 0;
-    if ( $line =~ /^\s*(```)(.*)$/ ) {
+    if (/^\s*(```)(.*)$/) {
         ++$level;
         $line =~ s/${1}.*\r?\n?$/~~~/;
         my @options = ();
@@ -87,7 +96,7 @@ while (<IMD>) {
         next;
     }
 
-    if ($line =~ /^\s*(~~~~*)(.*)$/) {
+    if (/^\s*(~~~~*)(.*)$/) {
         ++$level;
         my $options = ${2} // "";
         $line =~ s/${1}.*\r?\n?$/~~~/;
@@ -105,9 +114,10 @@ while (<IMD>) {
         next;
     }
 
-    print $line;
+    $line =~ s/\r?\n?$//;
+    print $line . "\n";
 }
 
 close IMD;
-close OMD;
+close RDL;
 close TAGS;

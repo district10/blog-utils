@@ -5,6 +5,8 @@
 The Title
 =========
 
+<#>(@read0tag1 @read0tag2)
+
 [readed 1](https://raw.githubusercontent.com/district10/blog/master/_pages/notes.md)
 
 :   that's my note.
@@ -68,6 +70,7 @@ The Title
     code: ~~~ {#id3 .python}
     ~~~
 
+    <!--
     ~~~ {.python #id4 otherwords}
     code: ~~~ {.python #id4, otherwords}
     ~~~
@@ -83,6 +86,13 @@ The Title
     ~~~~~ {.python other words}
     code: ~~~ {.python other words}
     ~~~~~~~~~~~~~~~
+    -->
+
+    ~~~~ {#mycode .haskell .numberLines startFrom="100"}
+    qsort []     = []
+    qsort (x:xs) = qsort (filter (< x) xs) ++ [x] ++
+                   qsort (filter (>= x) xs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ---
 
@@ -97,3 +107,13 @@ misc note2
     <#>(@tag1 @tag2 @tag-3 @ta-g-4)
 
     note more
+
+<#>(@read0tag1 @read0tag2)
+
+<!--
+~~~~~~~~~~~~~~~~~~tzx-bigquote
+```nested
+code here
+```
+~~~~~~~~~~~~~~~~~~
+-->
