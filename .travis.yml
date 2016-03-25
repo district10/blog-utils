@@ -12,4 +12,5 @@ script:
   - cd ~/build/district10/blog-utils; mkdir -p publish
   - cat conf.json.in | sed -e "s/QiNiuAK/$QiNiuAK/" | sed -e "s/QiNiuSK/$QiNiuSK/" > conf.json
   - make clean
-  - make qiniu
+  - make pack
+  - ~/qrsync conf.json

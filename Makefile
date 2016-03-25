@@ -1,5 +1,6 @@
 DIR_TESTS    = tests
 DIR_OUTPUTS  = outputs
+MKDIR_P = mkdir -p
 
 LIST_IN_MD   = $(wildcard $(DIR_TESTS)/*.md)
 IN_MD        = $(LIST_IN_MD:$(DIR_TESTS)/%=%)
@@ -55,12 +56,14 @@ status:
 diff:
 	git diff
 
-qiniu:
-	rm -Rf publish 2&>/dev/null
-	mkdir -p publish
+pack: publish
+publish:
+	mkdir -p $@
+
+pack:
+	rm -Rf publish/* 
 	cp -r tests outputs publish/
 	(echo '```'; tree; echo '```';) | pandoc -f markdown -s -S --ascii -o publish/index.html
-	~/qrsync conf.json
 
 m:
 	$(EDITOR) Makefile
@@ -68,4 +71,5 @@ readme:
 	$(EDITOR) README.md
 
 clean:
-	rm $(DIR_OUTPUTS)/*
+	rm -Rf $(DIR_OUTPUTS)/*
+	rm -Rf publish/
