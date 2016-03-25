@@ -3,6 +3,7 @@ before_install:
   - cd ~
   - wget https://github.com/jgm/pandoc/releases/download/1.17/pandoc-1.17-1-amd64.deb
   - sudo dpkg -i pandoc*.deb
+  - sudo apt-get install tree
 install:
   - cd ~
   - wget http://devtools.qiniu.com/qiniu-devtools-linux_amd64-current.tar.gz
@@ -14,5 +15,5 @@ script:
   - make 
   - cp -r outputs publish/
   - cp -r tests publish/
-  - (echo '<code>'; tree publish; echo '</code>';) > publish/index.html 
+  - (echo '<code>'; tree publish; echo '</code>';) | pandoc -s -S --ascii -f markdown -o publish/index.html 
   - cd ~/build/district10/blog-utils && ~/qrsync conf.json
