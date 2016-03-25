@@ -55,6 +55,13 @@ status:
 diff:
 	git diff
 
+qiniu:
+	rm -Rf publish 2&>/dev/null
+	mkdir -p publish
+	cp -r tests outputs publish/
+	(echo '```'; tree; echo '```';) | pandoc -f markdown -s -S --ascii -o publish/index.html
+	~/qrsync conf.json
+
 m:
 	$(EDITOR) Makefile
 readme:	
