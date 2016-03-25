@@ -2,7 +2,7 @@
 
 用于处理我的 [博客源码](https://github.com/district10/blog)。
 
-虽然代码有点丑但是功能基本有了。
+虽然代码有点丑（我还是先把我想要的结果弄出来，Perl 的模块化我都没看……）但是功能基本有了。
 
 ```bash
 # cp md file, extract tags, patch anchors, etc

@@ -114,6 +114,19 @@ while (<IMD>) {
         next;
     }
 
+    if (/^\s*(<small>\s*)+\s*$/) {
+        $line =~ s/\r?\n?$//;
+        print $line . "\n";
+        print "\n";
+        next;
+    }
+    if (/^\s*(<\/small>\s*)+\s*$/) {
+        print "\n";
+        $line =~ s/\r?\n?$//;
+        print $line . "\n";
+        next;
+    }
+
     $line =~ s/\r?\n?$//;
     print $line . "\n";
 }
