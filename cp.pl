@@ -7,7 +7,8 @@ use autodie;
 
 sub md5id {
     my $id = md5_hex($_);
-    $id =~ s/^./x/;
+    $id =~ s/^../ZX/;
+    $id =~ s/.$/T/;
     return $id;
 }
 
@@ -51,6 +52,23 @@ while (<IMD>) {
         next;
     }
 
+    # page ref
+    if (/^(.*)\[(.*?)\]\(#(.*?)\)(.*)$/) {
+        $line = $1 . '[' . $2 . '](#' . $filenamehash . $3 . ")$4";
+        $line =~ s/\r?\n?$//;
+        print $line . "\n";
+        next;
+    }
+    
+    # page anchor
+    if (/^(.*)`@`\{\.tzx-anchor #(.*)\}(.*)$/) {
+        $line = $1 . '`@`{.tzx-anchor #' . $filenamehash . $2 . '}' . $3;
+        $line =~ s/\r?\n?$//;
+        print $line . "\n";
+        next;
+    }
+    
+
     # tags
     if (/(\s*)<#(.*?)>(.*)/) {
         my $prefix = $1 // "";
@@ -61,7 +79,16 @@ while (<IMD>) {
             print $prefix . '`@`{.tzx-anchor #' . $filenamehash . $anchor . '}' . "\n";
             next;
         }
+
         # use last captured anchor
+        if (!$curAnchor) {
+            # gen anchor
+            $curAnchor = &md5id($line);
+            print $prefix . '`@`{.tzx-anchor #' . $filenamehash . $curAnchor . '}' . "\n";
+            print TAGS $filename, '#', $curAnchor, ': ', $line;
+            next;
+        }
+
         print TAGS $filename, '#', $curAnchor, ': ', $line;
         next if <IMD> =~ /^\s*$/;
         next;

@@ -1,15 +1,15 @@
 DIR_TESTS    = tests
 DIR_OUTPUTS  = outputs
 
-LIST_IN_MD   = $(wildcard $(DIR_TESTS)/*.in.md)
+LIST_IN_MD   = $(wildcard $(DIR_TESTS)/*.md)
 IN_MD        = $(LIST_IN_MD:$(DIR_TESTS)/%=%)
 
-OUT_READLIST = $(IN_MD:%.in.md=%.out.readinglist)
-OUT_TAGS     = $(IN_MD:%.in.md=%.out.tags)
-OUT_MD       = $(IN_MD:%.in.md=%.out.md)
+OUT_READLIST = $(IN_MD:%.md=%.readinglist)
+OUT_TAGS     = $(IN_MD:%.md=%.tags)
+OUT_MD       = $(IN_MD:%.md=%.md)
 HTML_READLIST = $(OUT_READLIST:%.readinglist=%.readinglist.html)
 HTML_TAGS     = $(OUT_TAGS:%.tags=%.tags.html)
-HTML_MD       = $(OUT_MD:%.md=%.md.html)
+HTML_MD       = $(OUT_MD:%.md=%.html)
 
 LIST_OUTS = $(OUT_READLIST) $(OUT_TAGS) $(OUT_MD)
 LIST_HTMLS = $(HTML_READLIST) $(HTML_TAGS) $(HTML_MD)
@@ -27,12 +27,17 @@ $(OUTS): $(DIR_OUTPUTS) cp.pl Makefile
 $(DIR_OUTPUTS):
 	mkdir -p $@
 
-$(DIR_OUTPUTS)/%.out.readinglist $(DIR_OUTPUTS)/%.out.tags $(DIR_OUTPUTS)/%.out.md: $(DIR_TESTS)/%.in.md
+$(DIR_OUTPUTS)/%.readinglist $(DIR_OUTPUTS)/%.tags $(DIR_OUTPUTS)/%.md: $(DIR_TESTS)/%.md
 	perl cp.pl \
 		$< \
-		$(<:$(DIR_TESTS)/%.in.md=$(DIR_OUTPUTS)/%.out.readinglist) \
-		$(<:$(DIR_TESTS)/%.in.md=$(DIR_OUTPUTS)/%.out.tags) > \
-		$(<:$(DIR_TESTS)/%.in.md=$(DIR_OUTPUTS)/%.out.md)
+		$(<:$(DIR_TESTS)/%.md=$(DIR_OUTPUTS)/%.readinglist) \
+		$(<:$(DIR_TESTS)/%.md=$(DIR_OUTPUTS)/%.tags) > \
+		$(<:$(DIR_TESTS)/%.md=$(DIR_OUTPUTS)/%.md)
+
+%.html: %.md
+	pandoc \
+		$(PANDOC_OPTIONS) \
+		$< -o $@
 
 %.html: %
 	pandoc \
@@ -41,6 +46,15 @@ $(DIR_OUTPUTS)/%.out.readinglist $(DIR_OUTPUTS)/%.out.tags $(DIR_OUTPUTS)/%.out.
 
 gh:
 	git add -A; git commit -m "`date` - `uname`"; git push
+pull:
+	git pull
+push:
+	git push
+status:
+	git status
+diff:
+	git diff
+
 m:
 	$(EDITOR) Makefile
 readme:	
