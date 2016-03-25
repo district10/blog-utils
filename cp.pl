@@ -68,7 +68,7 @@ while (<IMD>) {
     }
 
     # one reading material
-    if (/^\[.*?\](.*)$/) {
+    if (/^\[.*?\]\((.*)\).*$/) {
         $line =~ s/\r?\n?$//;
         my $mdurl = $line;
         $mdurl =~ s/^\s+|\s+$//g;
