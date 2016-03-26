@@ -16,6 +16,9 @@ perl cp.pl \
         outputs/sample01.tags > \
         outputs/sample01.md
 
+# cp 并不 encrypt 文件名 hash，由 merge 来处理合并时可能的冲突问题。
+# cp 基本测试通过，现在到 blog 里面去实际应用。
+
 # TODO: merge all md files
 perl merge.pl \
     ...

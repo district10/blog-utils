@@ -7,7 +7,7 @@
 
 下面是两个 tag（用于生成列表，索引）：还没有 anchor，所以会自动生成一个。
 
-`@`{.tzx-anchor #ZX1d8cd98f00b204e9800998ecf8427TZX2f7b14f7e801a3b2a9efa546a3e23T}
+`@`{.tzx-anchor #ZX1de28d1e770e4c5f4ed0ac371e965T}
 
 原文里是：
 
@@ -15,13 +15,13 @@
 <#>(@read0tag1 @read0tag2)
 ~~~
 
-[阅读 1](https://raw.githubusercontent.com/district10/blog/master/_pages/notes.md) [^脚注] `@`{.tzx-anchor #ZX1240b9c8b875a4ec73f187f3d9f81T}
+[阅读 1](https://raw.githubusercontent.com/district10/blog/master/_pages/notes.md) [^脚注] `@`{.tzx-anchor #ZX500b50b3d297d7fdd2aa90fbac4a5T}
 
 :   这是笔记。下面有两个 tag。
 
     这两个 tag 会被 anchor 到「阅读 1」。
 
-    `@`{.tzx-anchor #ZX1d8cd98f00b204e9800998ecf8427Thello}
+    `@`{.tzx-anchor #hello}
 
     欢迎回来。但是你看不到（#hello），只是用来 anchoring。
 
@@ -39,8 +39,7 @@
 
     这里是两个 tag，anchor 到生成精确的当前位置（#hooked）。
 
-    `@`{.tzx-anchor #ZX1d8cd98f00b204e9800998ecf8427Thooked}
-
+    `@`{.tzx-anchor #hooked}
 
     ~~~ {#auto-listing-4}
     指定语言的代码：```c
@@ -56,13 +55,13 @@
 
 [^脚注]: 脚注是不错的。
 
-[阅读 2](https://github.com/hadley/adv-r/) `@`{.tzx-anchor #ZX2c233f8d7c54ec514c47065743656T}
+[阅读 2](https://github.com/hadley/adv-r/) `@`{.tzx-anchor #ZXfe45293b32db161408454be928b45T}
 
 [这个不是阅读]
 
 [这个不是阅读]: http://dvorak4tzx.com
 
-[这个是阅读，并有笔记](http://johnmacfarlane.net/pandoc/) `@`{.tzx-anchor #ZX377aa338a829ff31d97f80a2307e5T}
+[这个是阅读，并有笔记](http://johnmacfarlane.net/pandoc/) `@`{.tzx-anchor #ZX4adf233335c9d259d8caee6f388fcT}
 
 :   note
 
@@ -104,13 +103,13 @@ misc note
 
 misc note2
 
-[readed 3](https://github.com/district10/extract-out-a-reading-list/blob/master/.gitignore) `@`{.tzx-anchor #ZX6884ac5a316fef82d2f2164318475T}
+[readed 3](https://github.com/district10/extract-out-a-reading-list/blob/master/.gitignore) `@`{.tzx-anchor #ZXf7a7f8af4bd76623b7b8ebc8130adT}
 
 :   notes
 
     note more
 
-现在回到 [hello](#ZX1d8cd98f00b204e9800998ecf8427Thello)
+现在回到 [hello](#hello)
 
 ![][standalone-pic-big-one]
 
