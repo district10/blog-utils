@@ -36,3 +36,4 @@ TODO
 - 以后可以考虑用这重新实现这些功能，毕竟我测到的，我的 `cp.pl` 效率比 `cp` 慢好多：
     + make move  8.39s user 0.90s system 94% cpu 9.881 total
     + make move  0.26s user 0.27s system 53% cpu 0.995 total
+    + [jQuery-based Local Search Engine for Hexo | HaHack](http://hahack.com/codes/local-search-engine-for-hexo/)
