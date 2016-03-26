@@ -41,7 +41,7 @@
 
     `@`{.tzx-anchor #hooked}
 
-    ~~~ {#auto-listing-4}
+    ~~~ {.c #auto-listing-4}
     指定语言的代码：```c
     ~~~
 
@@ -49,7 +49,7 @@
     用 tilde 符号：~~~~~~
     ~~~
 
-    ~~~ {#auto-listing-6}
+    ~~~ {.tzx-bigquote #auto-listing-6}
     用自己的 class 也是可以的。
     ~~~
 
