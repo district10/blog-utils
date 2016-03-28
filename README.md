@@ -2,6 +2,20 @@
 
 [![Build Status](https://travis-ci.org/district10/blog-utils.svg?branch=master)](https://travis-ci.org/district10/blog-utils)
 
+「Koan | 吐槽」
+
+发现自己在重复造轮子，而且造得不好！Pandoc 有 `--filter` 和 `--file-scope` 的概念，
+正好对应我的 `filter.pl` 和 `merger.pl`，我……只能说英雄所见略同了……
+这些 Perl 脚本还能用，但计划以后用 Pandoc 的 filter。
+
+「Refs | 参考文档」
+
+  - [Pandoc - Scripting with pandoc](http://pandoc.org/scripting.html)
+  - [Pandoc::Filter - process Pandoc abstract syntax tree - metacpan.org](https://metacpan.org/pod/Pandoc::Filter)
+  - [jgm/pandocfilters: A python module for writing pandoc filters, with a collection of examples](https://github.com/jgm/pandocfilters)
+
+---
+
 用于处理我的 [博客源码](https://github.com/district10/blog)。
 
 虽然代码有点丑（我还是先把我想要的结果弄出来，Perl 的模块化我都没看……）但是功能基本有了。
