@@ -1,0 +1,5 @@
+a picture <img src="http://whudoc.qiniudn.com/2016/29284-caa7365f38529250.png" /> is a picture.
+ 
+<img src="url_1"/>
+<img src="url_2" />
+a <img src="url_3" /> is not <img src="url_4" /> e.

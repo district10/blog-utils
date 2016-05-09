@@ -1,0 +1,5 @@
+project( lazyload )
+cmake_minimum_required( VERSION 2.6 )
+include_directories( ${CMAKE_SOURCE_DIR} )
+include_directories( ${CMAKE_BINARY_DIR} )
+add_executable( ${PROJECT_NAME} main.cpp )
