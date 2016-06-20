@@ -1,0 +1,8 @@
+this is e.
+
+e.txt wants to include a.txt,
+but it won't work.
+
+6-------------------ea
+@include <-=a.txt=
+6---------------------

@@ -1,0 +1,7 @@
+this is file d.txt,
+it includes c.txt.
+most simple include.
+
+5-------------------dc
+@include <-=c.txt=
+5---------------------

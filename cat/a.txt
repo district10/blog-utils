@@ -1,0 +1,25 @@
+Summary:
+
+a <- b,c
+b <- d
+c <- e
+d <- c
+
+so that,
+
+    a <- (b (<- d (<- c(<-e))))
+        \_ (c (<- e))
+
+this is file a.txt,
+and a.txt want to
+include file: b.txt, c.txt
+
+|   ------------------
+1-------------------ab
+@include <-|   =b.txt=
+1---------------------
+
+>   ------------------
+2-------------------ac
+@include <->   =c.txt=
+2---------------------

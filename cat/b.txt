@@ -1,0 +1,10 @@
+this is file b.txt,
+it was included by a.txt.
+
+it also want's to include
+d.txt, prefix each line with: "++++"
+
+++++------------------
+3-------------------bd
+@include <-++++=d.txt=
+3---------------------

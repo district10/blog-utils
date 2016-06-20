@@ -1,0 +1,9 @@
+c.txt include e.txt
+
+no prefix, but with
+8 spaces as padding.
+
+12345678|-------------
+4-------------------ce
+        @include <-=e.txt=
+4---------------------
