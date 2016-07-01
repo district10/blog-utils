@@ -26,12 +26,13 @@ sub unfold {
     }
     unshift(@_, $FILENAME); # @_: processed file.
 
-    # print "\t\t\tcur file: $FILENAME, file stack: (@_), padding: '$PADDING', prefix: '$PREFIX'\n";
+    # print "\t\t\t\t\t\tcur file: $FILENAME, file stack: (@_), padding: '$PADDING', prefix: '$PREFIX'\n";
     open my $INPUT, '<', $FILENAME;
     while(<$INPUT>) {
         #   padding         prefix   filename
         if (/^(\s*)\@include <-(.*)=(.*)=/) {
-            &unfold( $PADDING . $1,
+            &unfold(
+                     $PADDING . $1,
                      $PREFIX . $2,
                      $3, @_ );
         } else {
