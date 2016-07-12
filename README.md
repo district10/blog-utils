@@ -8,9 +8,11 @@
 
 ## cp.pl
 
-用于提取 markdown 文件中的链接、tag。文件 <tests/sample01.md> 经由 <cp.pl> 会生
-成 <outputs/sample01.md>（去掉了标记）、<outputs/sample01.readinglist> 和
-<outputs/sample01.tags>。生成的 readinglist 文件和 tags 文件会被整合成一个索引。
+用于提取 markdown 文件中的链接、tag。文件 [`tests/sample01.md`](https://raw.githubusercontent.com/district10/blog-utils/master/tests/sample01.md)
+经由 [`cp.pl`](cp.pl) 会生成 [`outputs/sample01.md`](https://github.com/district10/blog-utils/tree/master/outputs/sample01.md)（去掉了标记）、
+[`outputs/sample01.readinglist`](https://github.com/district10/blog-utils/tree/master/outputs/sample01.readlinglist) 和
+[`outputs/sample01.tags`](https://github.com/district10/blog-utils/tree/master/outputs/sample01.tags)。
+生成的 readinglist 文件和 tags 文件会被整合成一个索引。
 
 ```bash
 # cp md file, extract tags, patch anchors, etc
@@ -23,14 +25,6 @@ perl cp.pl \
 # cp 并不 encrypt 文件名 hash，由 merge 来处理合并时可能的冲突问题。
 # cp 基本测试通过，现在到 blog 里面去实际应用。
 ```
-
-**cp.pl**
-
-- sample input: [sample01.md](https://raw.githubusercontent.com/district10/blog-utils/master/tests/sample01.md)
-- sample output:
-    + [sample01.md](https://github.com/district10/blog-utils/tree/master/outputs/sample01.md)
-    + [sample01.readinglist](https://github.com/district10/blog-utils/tree/master/outputs/sample01.readlinglist)
-    + [sample01.tags](https://github.com/district10/blog-utils/tree/master/outputs/sample01.tags)
 
 ## merge.pl
 
