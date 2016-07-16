@@ -53,6 +53,14 @@ filter 的目的是，使得 travis 只处理最新的 commit/push 更新了的�
 不过用正则表达式似乎有点难（很多 corner cases，你不能直接匹配字符就修改，还应该
 判断文档当前的状态，比如：当前行是在 `<code>` 标签内吗？）。
 
+## sitemap.pl
+
+用来生成站点的 sitemap（xml 和 txt 格式），源码：
+[blog/sitemap.pl at master · district10/blog](https://github.com/district10/blog/blob/master/sitemap.pl)。
+
+因为我的站点是扁平的（所有文件都在 root 目录），所以我用了 `ls *.html`，
+或许你要用 `find . -iname "*.html"`。
+
 ## CuteWatchDog
 
 用来监控目标文件夹下文本的变动。比进行相应的操作。源码见
